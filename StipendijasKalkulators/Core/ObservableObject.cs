@@ -8,14 +8,31 @@ using System.Runtime.CompilerServices;
 
 namespace StipendijasKalkulators.Core
 {
-    class ObservableObject : INotifyPropertyChanged
+    class ObservableObject : INotifyPropertyChanged, IDisposable
     {
         public event PropertyChangedEventHandler PropertyChanged;
-
-        protected void OnPropertyChanged([CallerMemberName] string name = null)
+        public void Dispose()
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+            Dispose(true);
         }
+        protected virtual void OnPropertyChanged([CallerMemberName] string PropertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(PropertyName));
+        }
+        protected virtual bool Set<T>(ref T field, T value, [CallerMemberName] string PropertyName = null)
+        {
+            if (Equals(field, value)) return false;
+            field = value;
+            OnPropertyChanged(PropertyName);
+            return true;
+        }
+        protected virtual void Dispose(bool Disposing)
+        {
+            if (!Disposing || _disposed) return;
+            _disposed = true;
+        }
+
+        private bool _disposed;
 
     }
 }
