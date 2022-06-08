@@ -7,7 +7,7 @@ using StipendijasKalkulators.Core;
 
 namespace StipendijasKalkulators.MVVM.ViewModel
 {
-    class CalculatorViewModel : ObservableObject
+    internal class CalculatorViewModel : ObservableObject
     {
         public CalculatorViewModel()
         {

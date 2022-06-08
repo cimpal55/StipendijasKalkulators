@@ -3,13 +3,16 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:StipendijasKalkulators" xmlns:vm="clr-namespace:StipendijasKalkulators.ViewModel"
+        xmlns:local="clr-namespace:StipendijasKalkulators" 
+        xmlns:vm="clr-namespace:StipendijasKalkulators.ViewModel"
         mc:Ignorable="d"
         Height="450" Width="800"
-        WindowStyle="None"
+        Title="{Binding Title}"
         Background="Transparent"
         AllowsTransparency="True"
-        ResizeMode="NoResize">
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        MouseLeftButtonDown="MainWindow_OnMouseDown">
 
     <Window.DataContext>
         <vm:MainViewModel/>
@@ -39,60 +42,108 @@
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
-                    <ColumnDefinition/>
+
                 </Grid.ColumnDefinitions>
 
-                <Image Source="pack://application:,,,/images/logo.png"
-                       HorizontalAlignment="Left"
-                       Margin="10,0,0,0"/>
-
-                <TextBlock Text="Scholarship Calculator"
-                       VerticalAlignment="Center"
-                       HorizontalAlignment="Right"
-                       Grid.Column="0"
-                       Margin="10,0,0,0"
-                       FontSize="11"
-                       FontWeight="Light"
-                       FontFamily="Fonts/#Dosis"
-                       Foreground="White"
-                       TextWrapping="Wrap"/>
-
-                <TextBlock Text="Info"
-                       VerticalAlignment="Center"
-                       HorizontalAlignment="Center"
-                       Grid.Column="2"
-                       FontSize="15"
-                       FontWeight="Medium"
-                       FontFamily="Fonts/#Dosis"
-                       Foreground="White"/>
-
-                <TextBlock Text="Calculator"
-                       VerticalAlignment="Center"
-                       HorizontalAlignment="Center"
-                       Grid.Column="3"
-                       FontWeight="Medium"
-                       FontSize="15"
-                       FontFamily="Fonts/#Dosis"
-                       Foreground="White"/>
-
-                <TextBlock Text="Menu"
-                       VerticalAlignment="Center"
-                       HorizontalAlignment="Center"
-                       Grid.Column="4"
-                       FontSize="15"
-                       FontWeight="Medium"
-                       FontFamily="Fonts/#Dosis"
-                       Foreground="White"/>
+                    <RadioButton Content="Info"
+                                 Grid.Column="0"
+                                 Style="{StaticResource UpperMenuButton}"/>
+                    <RadioButton Content="Calculator"
+                                 Grid.Column="1"
+                                 Style="{StaticResource UpperMenuButton}"/>
+                    <RadioButton Content="Menu"
+                                 Grid.Column="2"
+                                 Style="{StaticResource UpperMenuButton}"/>
 
             </Grid>
 
-            <StackPanel Grid.Row="1"
-                        Orientation="Horizontal">
-                <StackPanel>
-                    <TextBlock Text=""
-                               Foreground="White"/>
+            <StackPanel Grid.Row="1" Grid.Column="0"
+                        Margin="60"
+                        VerticalAlignment="Center">
+
+                <StackPanel Orientation="Horizontal"
+                            Margin="0,0,0,5">
+                    <Image Source="pack://application:,,,/images/logo.png"
+                           Width="50"
+                           Height="50"/>
+                    <TextBlock Text="NaersCo"
+                               Foreground="White"
+                               FontFamily="Fonts/#Dosis"
+                               FontSize="20"
+                               FontWeight="Medium"
+                               VerticalAlignment="Center"
+                               Margin="10,0,0,0"/>
                 </StackPanel>
+
+                <TextBlock FontSize="25"
+                           FontWeight="Medium"
+                           FontFamily="Fonts/#Dosis"
+                           Foreground="White"
+                           Text="Scholarship&#x0a;calculator"
+                           Margin="0,10,0,10"/>
+
+                <TextBlock Text="This program was created in order to calculate the average score of the student, as well as his scholarship"
+                           Foreground="White"
+                           FontFamily="Fonts/#Dosis"
+                           FontSize="14"
+                           TextWrapping="Wrap"
+                           Margin="0,0,0,60"/>
+
             </StackPanel>
+
+            <Grid Grid.Row="0"  Grid.Column="1"
+                  Grid.RowSpan="2"
+                  Margin="150, -360, -610, 85"
+                  ZIndex="-1">
+
+                <Grid.RenderTransform>
+                    <RotateTransform Angle="50"/>
+                </Grid.RenderTransform>
+
+                <StackPanel Orientation="Horizontal"
+                            Margin="-410, 250, -250, -250">
+                    <StackPanel>
+                        <Border Width="700"
+                                Height="35"
+                                Background="#3DDDC2"
+                                Margin="150,0,0,0"
+                                CornerRadius="20"/>
+
+                        <Border Width="700"
+                                Height="35"
+                                Background="#FC6586"
+                                Margin="0,15,0,0"
+                                CornerRadius="20"/>
+
+                        <Border Width="700"
+                                Height="35"
+                                Background="#383660"
+                                Margin="75,15,0,0"
+                                CornerRadius="20"/>
+                    </StackPanel>
+
+                    <StackPanel>
+                        <Border Width="700"
+                                Height="35"
+                                Background="#3DDDC2"
+                                Margin="150,0,0,0"
+                                CornerRadius="20"/>
+
+                        <Border Width="700"
+                                Height="35"
+                                Background="#FC6586"
+                                Margin="0,15,0,0"
+                                CornerRadius="20"/>
+
+                        <Border Width="700"
+                                Height="35"
+                                Background="#383660"
+                                Margin="75,15,0,0"
+                                CornerRadius="20"/>
+                    </StackPanel>
+                </StackPanel>
+
+            </Grid>
 
         </Grid>
 

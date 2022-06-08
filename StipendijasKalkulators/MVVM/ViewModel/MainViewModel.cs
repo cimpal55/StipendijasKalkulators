@@ -2,18 +2,26 @@
 
 namespace StipendijasKalkulators.ViewModel
 {
-    class MainViewModel : ObservableObject
+    internal class MainViewModel : ObservableObject
     {
-        private object _currentView;
         public object CurrentView
         {
-            get { return _currentView; }
+            get => _currentView;
             set
             {
                 _currentView = value;
                 OnPropertyChanged();
             }
         }
+        public string Title
+        {
+            get => _title;
+            set => Set(ref _title, value);
+        }
+
+        private object _currentView;
+
+        private string _title = "Calculator Stipendijas";
 
     }
 }
