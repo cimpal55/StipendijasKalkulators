@@ -18,9 +18,9 @@ namespace StipendijasKalkulators.MVVM.View
     /// <summary>
     /// Логика взаимодействия для UserControl1.xaml
     /// </summary>
-    public partial class CalculatorView : UserControl
+    public partial class HomeView : UserControl
     {
-        public CalculatorView()
+        public HomeView()
         {
             InitializeComponent();
         }

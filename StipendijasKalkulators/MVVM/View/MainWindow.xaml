@@ -4,20 +4,19 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:StipendijasKalkulators" 
-        xmlns:vm="clr-namespace:StipendijasKalkulators.ViewModel"
+        xmlns:vm="clr-namespace:StipendijasKalkulators.MVVM.ViewModel"
         mc:Ignorable="d"
         Height="450" Width="800"
-        Title="{Binding Title}"
         Background="Transparent"
         AllowsTransparency="True"
         WindowStyle="None"
         ResizeMode="NoResize"
         MouseLeftButtonDown="MainWindow_OnMouseDown">
-
+    
     <Window.DataContext>
         <vm:MainViewModel/>
     </Window.DataContext>
-    
+
     <Border Background="#181735">
         <Grid>
           
@@ -32,7 +31,8 @@
             </Grid.ColumnDefinitions>
 
             <Grid Background="#060F2D"
-                  Grid.ColumnSpan="2">
+                  Grid.ColumnSpan="2"
+                  ZIndex="1">
 
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
@@ -44,108 +44,32 @@
                     <ColumnDefinition/>
 
                 </Grid.ColumnDefinitions>
-
+            
                     <RadioButton Content="Info"
                                  Grid.Column="0"
-                                 Style="{StaticResource UpperMenuButton}"/>
+                                 Style="{StaticResource UpperMenuButton}"
+                                 Command="{Binding HomeViewCommand}"
+                                 IsChecked="True"/>
+
                     <RadioButton Content="Calculator"
                                  Grid.Column="1"
-                                 Style="{StaticResource UpperMenuButton}"/>
+                                 Style="{StaticResource UpperMenuButton}"
+                                 Command="{Binding CalculatorViewCommand}"/>
+
                     <RadioButton Content="Menu"
                                  Grid.Column="2"
-                                 Style="{StaticResource UpperMenuButton}"/>
+                                 HorizontalContentAlignment="Stretch"
+                                 Style="{StaticResource UpperMenuButton}"
+                                 Command="{Binding CalculatorViewCommand}"/>
 
             </Grid>
 
-            <StackPanel Grid.Row="1" Grid.Column="0"
-                        Margin="60"
-                        VerticalAlignment="Center">
-
-                <StackPanel Orientation="Horizontal"
-                            Margin="0,0,0,5">
-                    <Image Source="pack://application:,,,/images/logo.png"
-                           Width="50"
-                           Height="50"/>
-                    <TextBlock Text="NaersCo"
-                               Foreground="White"
-                               FontFamily="Fonts/#Dosis"
-                               FontSize="20"
-                               FontWeight="Medium"
-                               VerticalAlignment="Center"
-                               Margin="10,0,0,0"/>
-                </StackPanel>
-
-                <TextBlock FontSize="25"
-                           FontWeight="Medium"
-                           FontFamily="Fonts/#Dosis"
-                           Foreground="White"
-                           Text="Scholarship&#x0a;calculator"
-                           Margin="0,10,0,10"/>
-
-                <TextBlock Text="This program was created in order to calculate the average score of the student, as well as his scholarship"
-                           Foreground="White"
-                           FontFamily="Fonts/#Dosis"
-                           FontSize="14"
-                           TextWrapping="Wrap"
-                           Margin="0,0,0,60"/>
-
-            </StackPanel>
-
-            <Grid Grid.Row="0"  Grid.Column="1"
-                  Grid.RowSpan="2"
-                  Margin="150, -360, -610, 85"
-                  ZIndex="-1">
-
-                <Grid.RenderTransform>
-                    <RotateTransform Angle="50"/>
-                </Grid.RenderTransform>
-
-                <StackPanel Orientation="Horizontal"
-                            Margin="-410, 250, -250, -250">
-                    <StackPanel>
-                        <Border Width="700"
-                                Height="35"
-                                Background="#3DDDC2"
-                                Margin="150,0,0,0"
-                                CornerRadius="20"/>
-
-                        <Border Width="700"
-                                Height="35"
-                                Background="#FC6586"
-                                Margin="0,15,0,0"
-                                CornerRadius="20"/>
-
-                        <Border Width="700"
-                                Height="35"
-                                Background="#383660"
-                                Margin="75,15,0,0"
-                                CornerRadius="20"/>
-                    </StackPanel>
-
-                    <StackPanel>
-                        <Border Width="700"
-                                Height="35"
-                                Background="#3DDDC2"
-                                Margin="150,0,0,0"
-                                CornerRadius="20"/>
-
-                        <Border Width="700"
-                                Height="35"
-                                Background="#FC6586"
-                                Margin="0,15,0,0"
-                                CornerRadius="20"/>
-
-                        <Border Width="700"
-                                Height="35"
-                                Background="#383660"
-                                Margin="75,15,0,0"
-                                CornerRadius="20"/>
-                    </StackPanel>
-                </StackPanel>
-
-            </Grid>
+            <ContentControl Grid.Column="0"  Grid.Row="1"
+                            Grid.ColumnSpan="2"
+                            Content="{Binding CurrentView}"/>
 
         </Grid>
 
     </Border>
+
 </Window>
